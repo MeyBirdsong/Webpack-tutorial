@@ -1,10 +1,20 @@
-import "./style.css";
-console.log("Hello webpack!");
+import "./style.scss";
+import React, { useState } from "react";
+import { render } from "react-dom";
+import { getUsers } from "./common/usersAPI";
+console.log("Hello Webpack!");
+getUsers().then((json) => console.log(json));
 
-const path = require("path");
+function App() {
+  const [state, setState] = useState("Click Me!");
 
-module.exports = {
-  output: {
-    path: path.resolve(__dirname, "build")
-  }
-};
+  return (
+    <button
+      onClick={() => {
+        setState("Clicked!");
+      }}
+    >
+      {state}
+    </button>
+  );
+}
